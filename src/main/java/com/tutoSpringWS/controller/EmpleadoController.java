@@ -17,6 +17,14 @@ public class EmpleadoController {
     @Autowired
     IEmpleadoService service;
 
+    @GetMapping(path = "/admin")
+    public String holaMundoAdmin() {
+        return "Hola Admin!!!!";
+    }
+
+    @GetMapping(path = "/dba")
+    public String holaMundoDba() { return "Hola DBA!!!!!!"; }
+
     @GetMapping(path = "/saludo/{name}")
     public String holaMundo(@PathVariable("name") String name) {
         return service.holaMundo(name);
@@ -34,11 +42,11 @@ public class EmpleadoController {
         return  resp;
     }
 
-    @GetMapping(path="/listar")
-    public List<EmpleadoDTO> listarEmpleados(){
+    @GetMapping(path="/listar/{codigo}")
+    public List<EmpleadoDTO> listarEmpleados(@PathVariable("codigo") int codigo){
         List<EmpleadoDTO> resp = null;
         try {
-            resp = service.listarEmpleados();
+            resp = service.listarEmpleados(codigo);
         }
         catch (Exception ex) {
             System.out.println("Error: " + ex);

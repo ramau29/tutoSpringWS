@@ -10,5 +10,5 @@ public interface IEmpleadoService {
 
     String guardarEmpleado(EmpleadoDTO empleado);
 
-    List<EmpleadoDTO> listarEmpleados();
+    List<EmpleadoDTO> listarEmpleados(int codigo);
 }

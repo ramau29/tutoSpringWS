@@ -36,9 +36,10 @@ public class EmpleadoService implements IEmpleadoService{
     }
 
     @Override
-    public List<EmpleadoDTO> listarEmpleados() {
+    public List<EmpleadoDTO> listarEmpleados(int codigo) {
         List<EmpleadoDTO> dtos = null;
-        List<EmpleadoEntity> entities = repo.findAll();
+//        List<EmpleadoEntity> entities = repo.findAll();
+        List<EmpleadoEntity> entities = repo.listarEmpleados(codigo);
         dtos = entities.stream().map(entity -> mapper.convertToDtoEmpleado(entity)).collect(Collectors.toList());
         return  dtos;
     }
